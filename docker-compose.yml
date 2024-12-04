@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  pokemon_api:
+    build: ./pokemonApi
+    container_name: pokemon_api
+    ports:
+      - "8225:8081"
+    networks:
+      - pokemon
+
+  pokemon_api_front:
+    build: ./pokemonAPI_Front
+    container_name: pokemon_api_front
+    ports:
+      - "8225:8080"
+    networks:
+      - pokemon
+
+networks:
+  pokemon:
+    driver: bridge
